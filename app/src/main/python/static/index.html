@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a1a1f">
+  <title>Lumen</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main id="app">
+  <section id="view-home" class="view active">
+    <header class="topbar">
+      <h1>Lumen</h1>
+      <label class="search">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="search" type="search" placeholder="Search your library" autocomplete="off" enterkeyhint="search">
+      </label>
+    </header>
+    <div id="content"></div>
+  </section>
+  <section id="view-settings" class="view">
+    <header class="topbar"><h1>Settings</h1></header>
+    <div class="list">
+      <label class="row">
+        <span>Autoplay<small>Start playing as soon as a video opens</small></span>
+        <span class="switch"><input type="checkbox" data-pref="autoplay"><i></i></span>
+      </label>
+      <label class="row">
+        <span>Resume playback<small>Pick up where you left off</small></span>
+        <span class="switch"><input type="checkbox" data-pref="resume"><i></i></span>
+      </label>
+      <button class="row" id="refresh">
+        <span>Refresh library<small id="count">Not loaded yet</small></span>
+        <svg class="i" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v4h-4"/></svg>
+      </button>
+    </div>
+  </section>
+</main>
+<nav class="tabbar">
+  <button class="tab active" data-view="home">
+    <svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Home
+  </button>
+  <button class="tab" data-view="settings">
+    <svg class="i" viewBox="0 0 24 24"><path d="M4 7h9M19 7h1M4 17h1M11 17h9"/><circle cx="16" cy="7" r="3"/><circle cx="8" cy="17" r="3"/></svg>Settings
+  </button>
+</nav>
+<div id="player" class="player" aria-hidden="true">
+  <div class="player-bar">
+    <button id="back" class="round" aria-label="Back">
+      <svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <span id="player-title"></span>
+  </div>
+  <video id="video" controls playsinline preload="metadata" controlsList="nodownload"></video>
+  <div id="spinner" class="spinner"></div>
+  <div id="player-error" class="state" hidden>
+    <h3>Can’t play this video</h3>
+    <p>The file may be unsupported, or the server stopped responding.</p>
+  </div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
